@@ -4,3 +4,7 @@
 /target/
 /target/scala-2.11/classes/
 /target/scala-2.11/test-classes/
+/.idea/
+/home.masoud.data.epcv.iceberg.attmpt/
+/project/
+/spark-warehouse/
