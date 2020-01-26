@@ -8,3 +8,7 @@
 /home.masoud.data.epcv.iceberg.attmpt/
 /project/
 /spark-warehouse/
+/extra/classes/
+/extra/test-classes/
+/extra/.ipynb_checkpoints/
+/extra/update/

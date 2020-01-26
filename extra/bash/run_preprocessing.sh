@@ -1,0 +1,1 @@
+spark-submit --class task.main.ListingsTablePreprocessor $spark_config $project_file_path file:///$staging_path file:///$preproccessed_path $run_date
