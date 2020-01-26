@@ -1,5 +1,4 @@
-[
-  {"field":"id","fieldType":"IntegerType"},
+{"field":"id","fieldType":"IntegerType"},
   {"field":"listing_url","fieldType":"StringType"},
   {"field":"scrape_id","fieldType":"LongType"},
   {"field":"last_scraped","fieldType":"TimestampType"},
@@ -95,4 +94,3 @@
   {"field":"require_guest_phone_verification","fieldType":"StringType"},
   {"field":"calculated_host_listings_count","fieldType":"IntegerType"},
   {"field":"reviews_per_month","fieldType":"DoubleType"}
-]

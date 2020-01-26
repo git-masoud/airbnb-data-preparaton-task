@@ -1,476 +1,79 @@
-[
-    {
-      "field": "bedrooms",
-      "rule": "NonNegative",
-      "type": "integer",
-      "extra": ""
-    },
-    {
-      "field": "instant_bookable",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "instant_bookable",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "host_verifications",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "room_type",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "room_type",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "Shared room,Entire home/apt,Private room"
-    },
-    {
-      "field": "availability_30",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_30",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "listing_url",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "requires_license",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "requires_license",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "t,f"
-    },
-    {
-      "field": "calendar_last_scraped",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "latitude",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "latitude",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "property_type",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "property_type",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "Apartment,Townhouse,Guest suite,Casa particular (Cuba),Camper/RV,Boutique hotel,Castle,Loft,Guesthouse,Hostel,Campsite,Villa,Aparthotel,Other,Serviced apartment,Hotel,Cottage,Condominium,House,Tent,Barn,Boat,Tiny house,Houseboat,Bungalow,Bed and breakfast,Cabin"
-    },
-    {
-      "field": "price",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_has_profile_pic",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "t,f"
-    },
-    {
-      "field": "cancellation_policy",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "cancellation_policy",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "strict_14_with_grace_period,moderate,flexible,super_strict_60,super_strict_30"
-    },
-    {
-      "field": "experiences_offered",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "square_feet",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "country",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_url",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_identity_verified",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "longitude",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "calculated_host_listings_count",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_cleanliness",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "country_code",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_365",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_365",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_communication",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_value",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "id",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "id",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_60",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_60",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "guests_included",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "guests_included",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_checkin",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "is_location_exact",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "is_location_exact",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "t,f"
-    },
-    {
-      "field": "require_guest_profile_picture",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "require_guest_profile_picture",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "number_of_reviews",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "number_of_reviews",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-     {
-      "field": "host_id",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "require_guest_phone_verification",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "require_guest_phone_verification",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "amenities",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_listings_count",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "extra_people",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "smart_location",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "reviews_per_month",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "bed_type",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "last_scraped",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "bathrooms",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_90",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "availability_90",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_is_superhost",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "review_scores_accuracy",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "minimum_nights",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "minimum_nights",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "street",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "has_availability",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "has_availability",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    },
-    {
-      "field": "calendar_updated",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "scrape_id",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "maximum_nights",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "maximum_nights",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "picture_url",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "host_total_listings_count",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_location",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "accommodates",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "accommodates",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "review_scores_rating",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "beds",
-      "rule": "NonNegative",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "is_business_travel_ready",
-      "rule": "Complete",
-      "type": "StringType",
-      "extra": ""
-    },
-    {
-      "field": "is_business_travel_ready",
-      "rule": "ContainedIn",
-      "type": "StringType",
-      "extra": "f,t"
-    }
-  ]
+    { "field": "bedrooms", "rule": "NonNegative", "type": "integer", "extra": ""    },
+    { "field": "instant_bookable", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "instant_bookable", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "host_verifications", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "room_type", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "room_type", "rule": "ContainedIn", "type": "StringType", "extra": "Shared room,Entire home/apt,Private room"    },
+    { "field": "availability_30", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "availability_30", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "listing_url", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "requires_license", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "requires_license", "rule": "ContainedIn", "type": "StringType", "extra": "t,f"    },
+    { "field": "calendar_last_scraped", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "latitude", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "latitude", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "property_type", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "property_type", "rule": "ContainedIn", "type": "StringType", "extra": "Apartment,Townhouse,Guest suite,Casa particular (Cuba),Camper/RV,Boutique hotel,Castle,Loft,Guesthouse,Hostel,Campsite,Villa,Aparthotel,Other,Serviced apartment,Hotel,Cottage,Condominium,House,Tent,Barn,Boat,Tiny house,Houseboat,Bungalow,Bed and breakfast,Cabin"},
+    { "field": "price", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "host_has_profile_pic", "rule": "ContainedIn", "type": "StringType", "extra": "t,f"    },
+    { "field": "cancellation_policy", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "cancellation_policy", "rule": "ContainedIn", "type": "StringType", "extra": "strict_14_with_grace_period,moderate,flexible,super_strict_60,super_strict_30"    },
+    { "field": "experiences_offered", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "square_feet", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "country", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "host_url", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "host_identity_verified", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "longitude", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "calculated_host_listings_count", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_cleanliness", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "country_code", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "availability_365", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "availability_365", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_communication", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_value", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "id", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "id", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "availability_60", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "availability_60", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "guests_included", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "guests_included", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_checkin", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "is_location_exact", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "is_location_exact", "rule": "ContainedIn", "type": "StringType", "extra": "t,f"    },
+    { "field": "require_guest_profile_picture", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "require_guest_profile_picture", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "number_of_reviews", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "number_of_reviews", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "host_id", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "require_guest_phone_verification", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "require_guest_phone_verification", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "amenities", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "host_listings_count", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "extra_people", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "smart_location", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "reviews_per_month", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "bed_type", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "last_scraped", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "bathrooms", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "availability_90", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "availability_90", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "host_is_superhost", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "review_scores_accuracy", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "minimum_nights", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "minimum_nights", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "street", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "has_availability", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "has_availability", "rule": "ContainedIn", "type": "StringType", "extra": "f,t"    },
+    { "field": "calendar_updated", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "scrape_id", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "maximum_nights", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "maximum_nights", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "picture_url", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "host_total_listings_count", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_location", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "accommodates", "rule": "Complete", "type": "StringType", "extra": ""    },
+    { "field": "accommodates", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "review_scores_rating", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "beds", "rule": "NonNegative", "type": "StringType", "extra": ""    },
+    { "field": "is_business_travel_ready", "rule": "Complete", "type": "StringType", "extra": "" },
+    { "field": "is_business_travel_ready", "rule": "ContainedIn", "type": "StringType", "extra": "f,t" }

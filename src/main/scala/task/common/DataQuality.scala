@@ -1,9 +1,14 @@
 package task.common
 
+import java.io.File
+import java.nio.file.{Files, Path}
+
 import com.amazon.deequ.VerificationSuite
 import com.amazon.deequ.checks.{Check, CheckLevel, CheckStatus}
 import org.apache.log4j.Logger
 import org.apache.spark.sql.DataFrame
+
+import scala.io.Source
 
 object DataQuality {
   val log: Logger = Logger.getLogger(DataQuality.getClass)
@@ -12,11 +17,12 @@ object DataQuality {
   case class DataRule(field: String, rule: String, extra: String)
 
   def validateSchema(dataFrameSchema:Seq[Schema], tableFileds: Seq[Schema]) = {
+
     if(!dataFrameSchema.length.equals(tableFileds.length))
     {
       val msg=s"Number of fields has been changed! ${dataFrameSchema.length} != ${tableFileds.length}"
       log.error(msg)
-      throw new Exception(msg)
+      throw new Exception(msg+" : "+tableFileds.diff(dataFrameSchema).mkString(","))
     }
     val dfSchemaMap=dataFrameSchema.map(c=> c.field-> c.fieldType).toMap
 
@@ -31,16 +37,21 @@ object DataQuality {
   }
 
   def validateDataframeAndSchema(sourceDf: DataFrame, tableName: String) = {
-    val rulesPath = getClass.getClassLoader.getResource(s"${tableName}_rules.json").getPath
-    val schemaPath = getClass.getClassLoader.getResource(s"${tableName}_schema.json").getPath
+    //in order to read the content from a file in the fat jar
+    val schemaFileContent = SparkUtils.spark.createDataset[String](Source.fromInputStream(
+      getClass.getClassLoader.getResourceAsStream(s"${tableName}_schema.json")).getLines().toSeq)
+    val rulesFileContent = SparkUtils.spark.createDataset[String](Source.fromInputStream(
+      getClass.getClassLoader.getResourceAsStream(s"${tableName}_rules.json")).getLines().toSeq)
+
     val tableFileds = SparkUtils.spark.read
       .option("multiline", "true")
-      .json(schemaPath).as[Schema].collect()
+      .json(schemaFileContent).as[Schema].collect()
+
     validateSchema(sourceDf.schema.map(c=>Schema(c.name,c.dataType.toString)),tableFileds)
 
     val tableRules = SparkUtils.spark.read
       .option("multiline", "true")
-      .json(rulesPath).as[DataRule].collect()
+      .json(rulesFileContent).as[DataRule].collect()
     val verificationSuite = VerificationSuite.apply().onData(sourceDf)
     tableRules.foreach(dataRule => {
       dataRule.rule match {
