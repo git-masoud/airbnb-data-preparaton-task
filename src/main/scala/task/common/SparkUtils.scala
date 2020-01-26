@@ -17,7 +17,7 @@ object SparkUtils {
 
 
   val spark = SparkSession.builder()
-    //.master("local[*]")
+    .master("local[*]")
     .getOrCreate()
   val log: Logger = Logger.getLogger(DataQuality.getClass)
 

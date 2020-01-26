@@ -1,1 +1,0 @@
-spark-submit --class task.main.ListingsModelDataPreparation $spark_config target/scala-2.11/testproject.jar file:///$preproccessed_path file:///$model_data_path $run_date

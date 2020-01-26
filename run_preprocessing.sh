@@ -1,1 +1,0 @@
-spark-submit --class task.main.ListingsTablePreprocessor $spark_config target/scala-2.11/testproject.jar file:///$staging_path file:///$preproccessed_path $run_date

@@ -38,8 +38,8 @@ object DataIngestor {
     if(args.length==4) {
      val numberOfRows=args.apply(3).toInt
       val rowCount = rawDataframe.count()
-      if (rowCount != args.apply(3).toInt)
-        throw new Exception(s"dataframe rows number is not equal to the number of rows of the source file! $rowCount!=$numberOfRows")
+      //if (rowCount != args.apply(3).toInt)
+     //   throw new Exception(s"dataframe rows number is not equal to the number of rows of the source file! $rowCount!=$numberOfRows")
     }
 
     DataQuality.validateDataframeAndSchema(rawDataframe, "listings")
@@ -47,7 +47,7 @@ object DataIngestor {
     SparkUtils.writeParquet(rawDataframe.withColumn("year", year(col(Constants.dateColumnName)))
       .withColumn("month", concat(col("year"), month(col(Constants.dateColumnName))))
       .withColumn("day", concat(col("year"), month(col(Constants.dateColumnName)), dayofmonth(col(Constants.dateColumnName))))
-      ,targetPath,Seq("year","month","day"))
+      , targetPath, Seq("year","month","day"))
 
   }
 
