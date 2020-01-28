@@ -25,6 +25,7 @@ object DataQuality {
    * @param sourceDf
    * @param tableName
    */
+  //TODO:add test cases
   def validateDataFrameAndSchema(sourceDf: DataFrame, tableName: String) = {
     //in order to read the content from a file in the fat jar in runtime
     val schemaFileContent = SparkUtils.spark.createDataset[String](Source.fromInputStream(
@@ -49,6 +50,7 @@ object DataQuality {
    * @param dataFrameSchema
    * @param tableFields
    */
+  //TODO:add test cases
   def validateSchema(dataFrameSchema: Seq[Schema], tableFields: Seq[Schema]) = {
 
     if (!dataFrameSchema.length.equals(tableFields.length)) {
@@ -72,6 +74,7 @@ object DataQuality {
    * @param rules
    * @param sourceDf
    */
+  //TODO:add test cases
   def evaluateDataQuality(rules: Array[DataRule], sourceDf: DataFrame) = {
     val verificationSuite = VerificationSuite.apply().onData(sourceDf)
     rules.foreach(dataRule => {
@@ -82,7 +85,6 @@ object DataQuality {
         //TODO: add other use cases
       }
     })
-
     verificationSuite.run().checkResults.foreach(c => {
       if (!c._2.status.equals(CheckStatus.Success)) {
         if (c._1.level == CheckLevel.Error) {

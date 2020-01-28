@@ -1,3 +1,10 @@
+#!/usr/bin/env bash
+if [ -z "$AIRFLOW_DAG_PATH" ]
+then
+      echo "\$please set AIRFLOW_DAG_PATH."
+      exit
+fi
+
 project_path=$(pwd)/
 data_path=$project_path/data/airbnb/
 #remove all the data

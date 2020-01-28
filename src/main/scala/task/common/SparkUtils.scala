@@ -9,8 +9,9 @@ import scala.util.{Failure, Success, Try}
 
 object SparkUtils {
 
-  val spark = SparkSession.builder()
+  val spark = SparkSession.builder().master("local")
     .getOrCreate()
+
   // Specifics partitions will be over written by this option not the whole table
   spark.conf.set("spark.sql.sources.partitionOverwriteMode", "dynamic")
   val log: Logger = Logger.getLogger(DataQuality.getClass)
@@ -20,6 +21,7 @@ object SparkUtils {
    * @param date format should be yyyy-mm-DD
    * @return (Int, Int, Int)
    */
+  //TODO:add test cases
   def parseArgDate(date: String) = {
     val dates = date.split("-")
     if (dates.length != 3)
@@ -33,6 +35,7 @@ object SparkUtils {
    * @param sourcePath
    * @return
    */
+  //TODO:add test cases
   def readParquet(sourcePath: String) = {
     Try(spark.read
       .parquet(sourcePath))
@@ -53,6 +56,7 @@ object SparkUtils {
    * @param options    spark options
    * @return DataFrame
    */
+  //TODO:add test cases
   def readCsv(sourcePath: String, options: Map[String, String]): DataFrame = {
     Try {
       spark.read
@@ -76,6 +80,7 @@ object SparkUtils {
    * @param partitionColumns columns shich spark should use them for partitioning
    * @param saveMode
    */
+  //TODO:add test cases
   def writeParquet(dataFrame: DataFrame, targetPath: String, partitionColumns: Seq[String], saveMode: SaveMode = SaveMode.Overwrite) = {
     Try {
       dataFrame
@@ -134,6 +139,7 @@ object SparkUtils {
    * @param columns
    * @return
    */
+  //TODO:add test cases
   def filterRows(sourceDf: DataFrame, columns: Array[String]) = {
     val conditions = columns.map(c => s"($c)").mkString(" and ")
     sourceDf.where(conditions)
