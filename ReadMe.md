@@ -1,32 +1,24 @@
-Eurowings Digital - Coding challenge
+# Data engineer task challenge
 
-Task Description
-As part of our initiative to transform Eurowings into a booking platform, we will be offering hotels and apartments through our platform. Imagine 2 years from now, that we have been hugely successful in offering apartments (like AirBnb) on our website. In order to offer the best price, we want to come up with a price prediction model, which uses the historical data of our booking platform.
-Task
-You get from us a data sample which contains historical listings from AirBnb. However, in its current state, it is not suitable to be used right away by our data scientists who want to focus on the model building without having to modify the data much further. Your task is now the following:
-Overall Goal: Prepare the provided dataset for deriving a price prediction model.
-Sub Tasks:
-Document thoroughly your approach for manipulating the dataset.
-Document how you intend your code to interface with the source system and the data scientists' models and how the data could be continuously updated (make assumptions where necessary).
-Document how your code could be scaled if confronted with terabytes of data. Alternatively, implement mechanisms that allow seamless scaling.
-Bonus Point:
-Use the processed data to derive a price prediction model.
+**Content:**
+1. [Task Description](#1-Task-Description)
+2. [Stake Holder](#2-stake-holder)
+3. 
 
-Submission
-
-
-Overview
+## Task Description
+ As part of our initiative to transform Eurowings into a booking platform, we will be offering hotels and apartments through our platform. Imagine 2 years from now, that we have been hugely successful in offering apartments (like AirBnb) on our website. In order to offer the best price, we want to come up with a price prediction model, which uses the historical data of our booking platform.
+* Task
+    * You get from us a data sample which contains historical listings from AirBnb. However, in its current state, it is not suitable to be used right away by our data scientists who want to focus on the model building without having to modify the data much further. Your task is now the following:
+        Overall Goal: Prepare the provided dataset for deriving a price prediction model.
+* Sub Tasks:
+    * Document thoroughly your approach for manipulating the dataset.
+    * Document how you intend your code to interface with the source system and the data scientists' models and how the data could be continuously updated (make assumptions where necessary).
+    * Document how your code could be scaled if confronted with terabytes of data. Alternatively, implement mechanisms that allow seamless scaling.
+* Bonus Point:
+    * Use the processed data to derive a price prediction model.
+         
+## Solution
 Designing a daily batch processing pipeline that can evaluate the input and clean them for further usage. This pipeline should be able to be automated and parameterized. 
-
-Usage
-Requirements
-Sbt : Installation
-Airflow: Installation
-Spark: Installation
-csvtool: sudo apt-get install csvtool
-After installing the requirements
-bash extra/bash/config.sh
-
 
 Pipelines
 Two pipelines were designed for this challenge. The first one prepare the data for the model and other use cases and the other pipeline train the model.
@@ -114,5 +106,141 @@ Continuous Delivery for Machine Learning
 	- In order to formalise the model training process in code, we used an open source MLFlow
 	
 
-	https://martinfowler.com/articles/cd4ml.html
+	https://martinfowler.com/articles/cd4ml.html 
+### Installation
+Requirements
+Sbt : Installation
+Airflow: Installation
+Spark: Installation
+csvtool: sudo apt-get install csvtool
+After installing the requirements
+bash extra/bash/config.sh
 
+```sh
+$ cd dillinger
+$ npm install -d
+$ node app
+```
+
+For production environments...
+
+```sh
+$ npm install --production
+$ NODE_ENV=production node app
+```
+
+
+## 4. Installation and Execution
+
+### 4.1 Getting Started
+
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+See deployment for notes on how to deploy the project on a live system.
+
+### 4.2 Prerequisites
+
+```
+1. Install Java Version 8
+2. Install Scala Version 2.11.8
+3. Install IntelliJ - Latest community edition and then install the latest Scala plugin available
+```
+
+### 4.3 Installing and executing tests
+
+A step by step series of examples that tell you have to get a development environment running
+
+```
+1. Clone the project from:
+   git clone https://git.dev.eon.com/predictive-maintenance/data-preparation.git
+
+2. Navigate to the project root and build the JAR file:
+   sbt clean assembly
+
+3. To build the project by skipping the unit tests (might be a bad idea, but nevertheless):
+   sbt 'set test in Test := {}' clean assembly
+
+4. Try to run the local unit tests and check if every test is running succesfully
+```
+
+### 4.4 Execution
+
+1. Connect to headnode via ssh<br />
+--> https://confluence.dev.eon.com/display/EICEIPM/SSH+connection+with+your+token
+
+2. If not already done, clone the repository to the headnode
+```
+git clone https://git.dev.eon.com/predictive-maintenance/data-preparation.git
+```
+3. Check if the environment variables are set to your satisfaction
+```
+cd ./data-preparation/
+less ./HAW.sh
+less setup_env.sh 
+```
+
+4. Setup environment variables by using the provided scripts
+```
+. setup_env.sh HAW (or EDI for EDIS)
+```
+5. Verify submit settings and run the module
+```
+less submit.sh
+sh submit.sh name-of-the-module-you-want-to-run main-class parameters-of-the-module
+```
+6. Lean back and enjoy data-preparation :-)
+
+
+Also take a look here for more information about setting up the environment: https://confluence.dev.eon.com/display/EICEIPM/HDInsight
+
+## 5. Project Structure
+
+* pm-data-preparation/
+    * [decode/](decode/README.md)
+        * base64_to_bz2.sh
+    * commons/
+        * src/
+            * main/
+            * test/
+    * edifeatureextraction/ (Not used in production)
+        * src/
+            * main/
+            * test/
+    * [dataconversion/](dataconversion/README.md)
+        * src/
+            * main/
+            * test/
+    * [hawsubstationsbmdb/](hawsubstationsbmdb/README.md)(Not used in production)
+        * src/
+            * main/
+            * test/
+    * [hawdatapreparation/](hawdatapreparation/README.md)
+        * src/
+            * main/
+            * test/
+    * [hawsubstations/](hawsubstation/README.md)
+        * src/
+            * main/
+            * test/
+    * [edidatapreparation/](edidatapreparation/README.md)
+        * src/
+            * main/
+            * test/
+    * [weather/](weather/README.md)(Not used in production)
+        * src/
+            * main/
+            * test/
+    * project/
+        * build.properties
+        * plugins.sbt
+    * build.sbt
+    * .gitlab-ci.yml
+    * commons.sh
+    * HAW.sh
+    * README.md
+    * setup_env.sh
+    * submit.sh
+    * run_weather.sh
+### Todos
+
+ - Write MORE Tests
+ - Add Night Mode

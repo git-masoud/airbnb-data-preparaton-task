@@ -22,7 +22,8 @@ object DataIngestor {
     }
 
     val (sourcePath, targetPath, tableName) = (args.apply(0), args.apply(1), args.apply(2))
-    var options = Map(
+    //These options are useful to set in order to help spark parse csv files better
+    val options = Map(
       "treatEmptyValuesAsNulls" -> "true",
       "wholeFile" -> "true",
       "header" -> "true",
@@ -34,23 +35,24 @@ object DataIngestor {
       "inferSchema" -> "true"
     )
 
-    val rawDataframe = SparkUtils.readCsv(sourcePath + s"/$tableName*.csv",options)
-    if(args.length==4) {
-     val numberOfRows=args.apply(3).toInt
-      val rowCount = rawDataframe.count()
-      //if (rowCount != args.apply(3).toInt)
-     //   throw new Exception(s"dataframe rows number is not equal to the number of rows of the source file! $rowCount!=$numberOfRows")
+    val rawDataFrame = SparkUtils.readCsv(sourcePath + s"/$tableName*.csv", options)
+
+    //if the number of rows was in the arguments, this will evaluate it with the number of rows from spark
+    if (args.length == 4) {
+      val numberOfRows = args.apply(3).toInt
+      val rowCount = rawDataFrame.count()
+      if (rowCount != args.apply(3).toInt)
+        throw new Exception(s"dataframe rows number is not equal to the number of rows of the source file! $rowCount!=$numberOfRows")
     }
 
-    DataQuality.validateDataframeAndSchema(rawDataframe, "listings")
+    DataQuality.validateDataFrameAndSchema(rawDataFrame, "listings")
 
-    SparkUtils.writeParquet(rawDataframe.withColumn("year", year(col(Constants.dateColumnName)))
+    SparkUtils.writeParquet(rawDataFrame.withColumn("year", year(col(Constants.dateColumnName)))
       .withColumn("month", concat(col("year"), month(col(Constants.dateColumnName))))
       .withColumn("day", concat(col("year"), month(col(Constants.dateColumnName)), dayofmonth(col(Constants.dateColumnName))))
-      , targetPath, Seq("year","month","day"))
+      , targetPath, Seq("year", "month", "day"))
 
   }
-
 
 
 }

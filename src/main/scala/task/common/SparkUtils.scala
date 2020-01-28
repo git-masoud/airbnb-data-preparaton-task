@@ -8,19 +8,31 @@ import org.apache.spark.sql.{Column, DataFrame, SaveMode, SparkSession}
 import scala.util.{Failure, Success, Try}
 
 object SparkUtils {
-  def parseArgDate(date: String) = {
-    val dates=date.split("-")
-    if(dates.length!=3)
-      throw new Exception("date format is incorrect. yyyy-mm-DD")
-    (dates.apply(0).toInt,dates.apply(1).toInt,dates.apply(2).toInt)
-  }
-
 
   val spark = SparkSession.builder()
-    .master("local[*]")
     .getOrCreate()
+  // Specifics partitions will be over written by this option not the whole table
+  spark.conf.set("spark.sql.sources.partitionOverwriteMode", "dynamic")
   val log: Logger = Logger.getLogger(DataQuality.getClass)
 
+  /**
+   * split string date two three different integers
+   * @param date format should be yyyy-mm-DD
+   * @return (Int, Int, Int)
+   */
+  def parseArgDate(date: String) = {
+    val dates = date.split("-")
+    if (dates.length != 3)
+      throw new Exception("date format is incorrect. yyyy-mm-DD")
+    (dates.apply(0).toInt, dates.apply(1).toInt, dates.apply(2).toInt)
+  }
+
+  /**
+   * Read parquets files from the input path as a data frame
+   *
+   * @param sourcePath
+   * @return
+   */
   def readParquet(sourcePath: String) = {
     Try(spark.read
       .parquet(sourcePath))
@@ -34,8 +46,14 @@ object SparkUtils {
     }
   }
 
+  /**
+   * Read csv files from the input path as a data frame
+   *
+   * @param sourcePath inputs path
+   * @param options    spark options
+   * @return DataFrame
+   */
   def readCsv(sourcePath: String, options: Map[String, String]): DataFrame = {
-    //TODO: reader should be able to read from different sources
     Try {
       spark.read
         .options(options)
@@ -50,7 +68,15 @@ object SparkUtils {
     }
   }
 
-  def writeParquet(dataFrame: DataFrame, targetPath: String,partitionColumns: Seq[String],saveMode:SaveMode=SaveMode.Overwrite) = {
+  /**
+   * Save data frame as parquet into the targetPath
+   *
+   * @param dataFrame        source data frame
+   * @param targetPath       target path
+   * @param partitionColumns columns shich spark should use them for partitioning
+   * @param saveMode
+   */
+  def writeParquet(dataFrame: DataFrame, targetPath: String, partitionColumns: Seq[String], saveMode: SaveMode = SaveMode.Overwrite) = {
     Try {
       dataFrame
         //TODO: should change to an optimize partitioner method
@@ -66,9 +92,19 @@ object SparkUtils {
     }
   }
 
-  def castToBoolean(sourceDf: DataFrame, columns: Array[String], trueValue: String, falseValue: String, caseSensetive: Boolean = false): DataFrame = {
+  /**
+   * cast a group of columns of a data frame to boolean
+   *
+   * @param sourceDf
+   * @param columns
+   * @param trueValue
+   * @param falseValue
+   * @param caseSensitive
+   * @return
+   */
+  def castToBoolean(sourceDf: DataFrame, columns: Array[String], trueValue: String, falseValue: String, caseSensitive: Boolean = false): DataFrame = {
     columns.foldLeft(sourceDf) { (tempDf, column) =>
-      if (caseSensetive)
+      if (caseSensitive)
         tempDf.withColumn(column, when(col(column) === trueValue, true).when(col(column) === falseValue, false).otherwise(null).cast(BooleanType))
       else
         tempDf.withColumn(column, when(lower(col(column)) === trueValue.toLowerCase(), true).when(lower(col(column)) === falseValue.toLowerCase(), false).otherwise(null).cast(BooleanType))
@@ -91,7 +127,14 @@ object SparkUtils {
     }
   }
 
-  def dropColumns(sourceDf: DataFrame, columns: Array[String]) = {
+  /**
+   * filter datafram with multiple columns conditions
+   *
+   * @param sourceDf
+   * @param columns
+   * @return
+   */
+  def filterRows(sourceDf: DataFrame, columns: Array[String]) = {
     val conditions = columns.map(c => s"($c)").mkString(" and ")
     sourceDf.where(conditions)
   }

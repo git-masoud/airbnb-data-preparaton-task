@@ -12,6 +12,10 @@ import org.apache.spark.mllib.evaluation.RegressionMetrics
 import org.apache.spark.sql.DataFrame
 import task.common.SparkUtils;
 
+/**
+ * This is only a demo model
+ * there are lots of mistake here, no need to be reviewed :)
+ */
 object MLListingsModel {
 
   import SparkUtils.spark.implicits._
