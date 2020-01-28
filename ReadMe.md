@@ -16,7 +16,7 @@
          
 ## Submission
 
-**[Price prediction data pipeline](./extra/Price prediction data pipeline.pdf)**
+ [Price prediction data pipeline](./extra/Price prediction data pipeline.pdf)
 
 ### Installation and Execution
 
@@ -55,38 +55,38 @@ export AIRFLOW_DAG_PATH=[Path of airflow]/dags
 
 ## 5. Project Structure
 
-
-* airflow
-    * airbnb_pipeline.py
-    * airbnb_model_pipeline.py
-* data
-    * airbnb
-* extra
-    * deequ-1.0.2.jar
-    * testproject.jar
-* src
-    * main
-        * scala
-            * task
-                * common
-                    * Constants
-                    * DataQaulity
-                    * SparkUtils
-                * main
-                    * DataIngestor 
-                    * ListingsModelDataPreparation 
-                    * ListingsTablePreprocessor 
-                    * MLListingsModel
-    * test
-        * scala
-            * task
-                * common
-                    * SparkUtilsTests
-* build.sbt
-* .gitignore
-* config.sh
-* ReadMe.md
-
+``` 
+── airflow
+    └── airbnb_pipeline.py
+    └── airbnb_model_pipeline.py
+── data
+    └── airbnb
+── extra
+    └── deequ-1.0.2.jar
+    └── testproject.jar
+── src
+    └── main
+        └── scala
+            └── task
+                └── common
+                    └── Constants
+                    └── DataQaulity
+                    └── SparkUtils
+                └── main
+                    └── DataIngestor 
+                    └── ListingsModelDataPreparation 
+                    └── ListingsTablePreprocessor 
+                    └── MLListingsModel
+    └── test
+        └── scala
+            └── task
+                └── common
+                    └── SparkUtilsTests
+── build.sbt
+── .gitignore
+── config.sh
+── ReadMe.md
+``` 
 
 
 ### TODOs
