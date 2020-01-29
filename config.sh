@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
 if [ -z "$AIRFLOW_DAG_PATH" ]
 then
-      echo "\$please set AIRFLOW_DAG_PATH."
+      echo "Please set AIRFLOW_DAG_PATH."
       exit
 fi
-
 project_path=$(pwd)/
+#copy dags to airflow dags directory
+cp -R $project_path/airflow/* $AIRFLOW_DAG_PATH/
+
 data_path=$project_path/data/airbnb/
 #remove all the data
 rm $data_path/* -r
