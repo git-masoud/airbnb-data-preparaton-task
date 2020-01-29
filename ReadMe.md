@@ -16,7 +16,7 @@
          
 ## Submission
 
- [Price prediction data pipeline](./extra/Price prediction data pipeline.pdf)
+ [Price prediction data pipeline](https://github.com/git-masoud/airbnb-data-preparaton-task/blob/master/extra/Price%20prediction%20data%20pipeline.pdf)
 
 ### Installation and Execution
 
