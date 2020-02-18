@@ -3,7 +3,7 @@
 
 
 ## Task Description
- As part of our initiative to transform Eurowings into a booking platform, we will be offering hotels and apartments through our platform. Imagine 2 years from now, that we have been hugely successful in offering apartments (like AirBnb) on our website. In order to offer the best price, we want to come up with a price prediction model, which uses the historical data of our booking platform.
+ As part of our initiative to transform our project into a booking platform, we will be offering hotels and apartments through our platform. Imagine 2 years from now, that we have been hugely successful in offering apartments (like AirBnb) on our website. In order to offer the best price, we want to come up with a price prediction model, which uses the historical data of our booking platform.
 * Task
     * You get from us a data sample which contains historical listings from AirBnb. However, in its current state, it is not suitable to be used right away by our data scientists who want to focus on the model building without having to modify the data much further. Your task is now the following:
         Overall Goal: Prepare the provided dataset for deriving a price prediction model.
